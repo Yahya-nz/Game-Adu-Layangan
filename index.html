@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="description" content="Game adu layangan di atas genteng kampung. Putuskan benang lawan, jaga benangmu sendiri.">
+  <meta name="theme-color" content="#2b1d4e">
+  <title>Adu Layangan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <canvas id="game" aria-label="Arena adu layangan"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div class="hud-left">
+      <div class="hud-label">BENANG</div>
+      <div class="bar" id="hp-bar"><div id="hp-fill"></div></div>
+    </div>
+    <div class="hud-center">
+      <div id="score">0</div>
+      <div id="combo"></div>
+    </div>
+    <div class="hud-right">
+      <div id="wave">Ronde 1</div>
+      <div id="wind"><span id="wind-arrow">&#10140;</span><span id="wind-text">Angin sedang</span></div>
+    </div>
+  </div>
+  <div id="hud-buttons" class="hidden">
+    <button id="btn-pause" class="icon-btn" title="Jeda (P)" aria-label="Jeda">&#10074;&#10074;</button>
+    <button id="btn-mute" class="icon-btn" title="Suara (M)" aria-label="Suara">&#128266;</button>
+  </div>
+
+  <div id="banner" class="hidden"><div id="banner-title"></div><div id="banner-sub"></div></div>
+  <div id="hint" class="hidden"></div>
+
+  <!-- Layar judul -->
+  <div id="screen-title" class="screen">
+    <div class="panel">
+      <div class="kite-logo" aria-hidden="true"></div>
+      <h1>Adu<br>Layangan</h1>
+      <p class="tag">Putuskan benang lawan, jaga benangmu sendiri!</p>
+      <button id="btn-start" class="btn">Main!</button>
+      <ul class="howto">
+        <li><b>Gerak</b> <span class="ctl-mouse">mouse / panah / WASD</span><span class="ctl-touch">geser jari di mana saja</span></li>
+        <li><b>Silangkan</b> benangmu dengan benang lawan</li>
+        <li><b>Gesek!</b> goyang layanganmu cepat-cepat saat bersilang</li>
+        <li><b>Tangkap</b> layangan putus untuk menambah benang</li>
+      </ul>
+      <div class="best">Rekor: <span id="best-title">0</span></div>
+    </div>
+  </div>
+
+  <!-- Layar jeda -->
+  <div id="screen-pause" class="screen hidden">
+    <div class="panel small">
+      <h2>Jeda</h2>
+      <button id="btn-resume" class="btn">Lanjut</button>
+      <button id="btn-quit" class="btn ghost">Ke Menu</button>
+    </div>
+  </div>
+
+  <!-- Layar game over -->
+  <div id="screen-over" class="screen hidden">
+    <div class="panel">
+      <h2 class="over-title">Layanganmu Putus!</h2>
+      <div id="new-best" class="hidden">Rekor baru!</div>
+      <div class="final-score" id="final-score">0</div>
+      <div class="stats">
+        <div><span id="st-wave">1</span><small>ronde</small></div>
+        <div><span id="st-cut">0</span><small>diputus</small></div>
+        <div><span id="st-catch">0</span><small>ditangkap</small></div>
+        <div><span id="st-combo">0</span><small>combo</small></div>
+      </div>
+      <button id="btn-retry" class="btn">Main Lagi</button>
+      <button id="btn-menu" class="btn ghost">Ke Menu</button>
+    </div>
+  </div>
+
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/audio.js"></script>
+  <script src="assets/js/scene.js"></script>
+  <script src="assets/js/kite.js"></script>
+  <script src="assets/js/entities.js"></script>
+  <script src="assets/js/game.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
