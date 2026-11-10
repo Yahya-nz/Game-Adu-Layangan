@@ -6,6 +6,8 @@ Pas main, benangmu tinggal disilangin ke benang lawan, terus layangannya digoyan
 
 Gamenya statis, cuma pakai HTML, CSS, sama JavaScript biasa tanpa framework.
 
+Link game: https://yahya-nz.github.io/Game-Adu-Layangan/
+
 ## Tampilan
 
 **Layar judul**
