@@ -13,6 +13,7 @@ const ui = {
   hint: $('hint'),
   title: $('screen-title'), pause: $('screen-pause'), over: $('screen-over'),
   bestTitle: $('best-title'), mute: $('btn-mute'),
+  hudRight: document.querySelector('.hud-right'),
 };
 const hud = {};
 const fmt = (n) => Math.round(n).toLocaleString('id-ID');
@@ -206,7 +207,12 @@ Game.render = function () {
   if (boss) {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const cw = canvas.width / dpr;
-    const bw = Math.min(cw * 0.6, 380), bx = (cw - bw) / 2, by = cw < 560 ? 120 : 92;
+    const bw = Math.min(cw * 0.6, 380), bx = (cw - bw) / 2;
+    // taruh di bawah skor/combo, dan di bawah kotak ronde kalau posisinya bertumpuk (layar HP)
+    let top = ui.combo.getBoundingClientRect().bottom;
+    const hr = ui.hudRight.getBoundingClientRect();
+    if (hr.left < bx + bw && hr.right > bx) top = Math.max(top, hr.bottom);
+    const by = Math.round(top + 26);
     ctx.fillStyle = 'rgba(20,10,40,0.6)';
     ctx.fillRect(bx - 3, by - 3, bw + 6, 16);
     ctx.fillStyle = '#ef233c';
